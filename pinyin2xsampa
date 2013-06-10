@@ -13,15 +13,16 @@ localreplacetable=(
 )
 initialtable=(
     ('b', 'p'), ('p', 'p_h'), ('m', 'm'), ('f', 'f'), ('d', 't'), ('t', 't_h'),
-    ('n', 'n'), ('l', 'l'), ('g', 'k'), ('k', 'k_h'), ('h', 'x'), ('j', 'ts\\'),
-    ('q', 'ts\\_h'), ('x', 's\\'), ('zh', 'ts`'), ('ch', 'ts`_h'), ('sh', 's`'),
-    ('r', 'z`'), ('z', 'ts'), ('c', 'ts_h'), ('s', 's')
+    ('ng', 'N'), ('n', 'n'), ('l', 'l'), ('g', 'k'), ('k', 'k_h'), ('h', 'x'),
+    ('j', 'ts\\'), ('q', 'ts\\_h'), ('x', 's\\'), ('zh', 'ts`'),
+    ('ch', 'ts`_h'), ('sh', 's`'), ('r', 'z`'), ('z', 'ts'), ('c', 'ts_h'),
+    ('s', 's')
 )
 finaltable=(
     ('\u00ea', 'E'), ('ai', 'aI'), ('ei', 'eI'), ('ao', 'aU'), ('ou', '@U'),
     ('ang', 'a~'), ('eng', '7~'), ('an', 'A~'), ('en', 'e~'), ('ie', 'iE'),
     ('iu', 'i@U'), ('ian', 'ie~'), ('ing', 'iM~'), ('ui', 'ueI'),
-    ('ve', 'yE'), ('vn', 'yi~'),
+    ('ve', 'yE'), ('vn', 'yi~'), ('ng', '~'), ('n', '~'),
     ('a', 'a'), ('o', 'o'), ('e', '7'), ('i', 'i'), ('u', 'u'), ('v', 'y'),
 )
 
@@ -31,6 +32,7 @@ def main():
             line=input()
         except EOFError:
             break
+        line=line.replace("'", ' ')
         words=line.split()
         pho=[]
         for word in words:
@@ -56,6 +58,7 @@ def main():
                 if word.startswith(i[0]):
                     initial=i[1]
                     word=word[len(i[0]):]
+                    break
             final=''
             while True:
                 foundfinal=False
