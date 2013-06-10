@@ -82,7 +82,7 @@ def main():
                 elif initial not in ('ts\\', 'ts\\_h', 's\\'):
                     initial+="'"
             pho.append(' '.join((initial, final, endwithr)).strip())
-        print(' '.join(pho).strip())
+        print(' '.join(('['+i+']' for i in pho)).strip())
 
 if __name__=='__main__':
     main()
