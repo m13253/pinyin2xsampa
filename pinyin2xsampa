@@ -36,8 +36,8 @@ def main():
         words=line.split()
         pho=[]
         for word in words:
-            if word in ('er', 'r'):
-                pho.append('r')
+            if word=='er':
+                pho.append('a r')
                 break
             if word.endswith('r'):
                 word=word[:-1]
