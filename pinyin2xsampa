@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-import re
-
 wholereplacetable=(
     ('bo', 'buo'), ('po', 'puo'), ('mo', 'muo'), ('fo', 'fuo'), ('zhi', 'zh'),
     ('chi', 'ch'), ('shi', 'sh'), ('ri', 'r'), ('zi', 'z'), ('ci', 'c'),
