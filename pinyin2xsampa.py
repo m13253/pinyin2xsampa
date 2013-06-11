@@ -17,7 +17,7 @@ initialtable=(
     ('s', 's')
 )
 finaltable=(
-    ('\u00ea', 'E'), ('ai', 'aI'), ('ei', 'eI'), ('ao', 'aU'), ('ou', '7U'),
+    ('\u00ea', 'E'), ('ai', 'aI'), ('ei', 'eI'), ('ao', 'AU'), ('ou', '7U'),
     ('ang', 'A~'), ('eng', '7~'), ('an', 'a~'), ('ong', 'o~'), ('en', '@~'),
     ('ie', 'iE'), ('iu', 'i7U'), ('ian', 'iE~'), ('ing', 'iM~'), ('ui', 'ueI'),
     ('uo', 'uO'), ('un', 'u@~'), ('ve', 'yE'), ('vn', 'yi~'), ('ng', 'N'),
