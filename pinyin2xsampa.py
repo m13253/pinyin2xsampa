@@ -6,8 +6,8 @@ wholereplacetable=(
     ('si', 's')
 )
 localreplacetable=(
-    ('yu', 'v'), ('ju', 'jv'), ('qu', 'qv'), ('xu', 'xv'), ('y', 'i'),
-    ('w', 'u'), ('\u00fc', 'v')
+    ('yu', 'v'), ('yi', 'i'), ('wu', 'u'), ('ju', 'jv'), ('qu', 'qv'),
+    ('xu', 'xv'), ('y', 'i'), ('w', 'u'), ('\u00fc', 'v')
 )
 initialtable=(
     ('b', 'p'), ('p', 'p_h'), ('m', 'm'), ('f', 'f'), ('d', 't'), ('t', 't_h'),
