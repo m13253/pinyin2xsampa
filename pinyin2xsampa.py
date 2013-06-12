@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 
+import sys
+
+if sys.version<(3,):
+    sys.stderr.write('This script requires Python 3 or higher version.\n')
+    sys.exit(1)
+
 wholereplacetable=(
     ('bo', 'buo'), ('po', 'puo'), ('mo', 'muo'), ('fo', 'fuo'), ('zhi', 'zh'),
     ('chi', 'ch'), ('shi', 'sh'), ('ri', 'r'), ('zi', 'z'), ('ci', 'c'),
