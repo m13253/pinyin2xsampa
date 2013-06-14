@@ -79,8 +79,6 @@ def main():
                     final='M'
                 elif initial in ('ts', 'ts_h', 's'):
                     final='1'
-                else:
-                    pass
             elif initial and (final.startswith('i') or final.startswith('y')):
                 if initial=='n':
                     initial='J'
