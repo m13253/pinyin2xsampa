@@ -2,7 +2,7 @@
 
 import sys
 
-if sys.version<(3,):
+if sys.version_info<(3,):
     sys.stderr.write('This script requires Python 3 or higher version.\n')
     sys.exit(1)
 
@@ -24,9 +24,9 @@ initialtable=(
 )
 finaltable=(
     ('\u00ea', 'E'), ('ai', 'aI'), ('ei', 'eI'), ('ao', 'AU'), ('ou', '@U'),
-    ('ang', 'A~'), ('eng', '7~'), ('an', 'a~'), ('ong', 'o~'), ('en', '@~'),
-    ('ie', 'iE'), ('iu', 'i@U'), ('ian', 'iE~'), ('ing', 'iM~'), ('ui', 'ueI'),
-    ('uo', 'uO'), ('un', 'u@~'), ('ve', 'yE'), ('vn', 'yi~'), ('ng', 'N'),
+    ('ang', 'AN'), ('eng', '7N'), ('an', 'an'), ('ong', 'oN'), ('en', '@n'),
+    ('ie', 'iE'), ('iu', 'i@U'), ('ian', 'iEn'), ('ing', 'iMN'), ('ui', 'ueI'),
+    ('uo', 'uO'), ('un', 'u@n'), ('ve', 'yE'), ('vn', 'yin'), ('ng', 'N'),
     ('n', 'n'), ('m', 'm'), ('a', 'A'), ('o', 'o'), ('e', 'MV'), ('i', 'i'),
     ('u', 'u'), ('v', 'y')
 )
@@ -79,11 +79,6 @@ def main():
                     final='M'
                 elif initial in ('ts', 'ts_h', 's'):
                     final='1'
-            elif initial and (final.startswith('i') or final.startswith('y')):
-                if initial=='n':
-                    initial='J'
-                elif initial not in ('ts\\', 'ts\\_h', 's\\'):
-                    initial+="'"
             pho.append(' '.join((initial, final, endwithr)).strip())
         print(' '.join(('['+i+']' for i in pho)).strip())
 
