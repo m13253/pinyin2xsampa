@@ -42,11 +42,11 @@ def main():
         pho=[]
         for word in words:
             if word=='er':
-                pho.append('a r')
+                pho.append('a r\\')
                 break
             if word.endswith('r'):
                 word=word[:-1]
-                endwithr='r'
+                endwithr='r\\'
             else:
                 endwithr=''
             for i in wholereplacetable:
