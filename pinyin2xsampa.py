@@ -24,11 +24,11 @@ initialtable=(
 )
 finaltable=(
     ('\u00ea', 'E'), ('ai', 'aI'), ('ei', 'eI'), ('ao', 'AU'), ('ou', '@U'),
-    ('ang', 'AN'), ('eng', '7N'), ('an', 'an'), ('ong', 'oN'), ('en', '@n'),
-    ('ie', 'iE'), ('iu', 'i@U'), ('ian', 'iEn'), ('ing', 'iMN'), ('ui', 'ueI'),
-    ('uo', 'uO'), ('un', 'u@n'), ('ve', 'yE'), ('vn', 'yin'), ('ng', 'N'),
-    ('n', 'n'), ('m', 'm'), ('a', 'a'), ('o', 'o'), ('e', 'MV'), ('i', 'i'),
-    ('u', 'u'), ('v', 'y')
+    ('ang', 'A N'), ('eng', '7 N'), ('an', 'a n'), ('ong', 'o N'),
+    ('en', '@ n'), ('ie', 'iE'), ('iu', 'i@U'), ('ian', 'iE n'),
+    ('ing', 'iM N'), ('ui', 'ueI'), ('uo', 'uO'), ('un', 'u@ n'), ('ve', 'yE'),
+    ('vn', 'yi n'), ('ng', 'N'), ('n', 'n'), ('m', 'm'), ('a', 'a'),
+    ('o', 'o'), ('e', 'MV'), ('i', 'i'), ('u', 'u'), ('v', 'y')
 )
 
 def main():
