@@ -64,10 +64,13 @@ def main():
                 if word == i[0]:
                     word = i[1]
                     break
-            for i in localreplacetable:
-                wordnew = word.replace(i[0], i[1])
-                if wordnew != word:
-                    word = wordnew
+            while True:
+                for i in localreplacetable:
+                    wordnew = word.replace(i[0], i[1])
+                    if wordnew != word:
+                        word = wordnew
+                        break
+                else:
                     break
             initial = ''
             for i in initialtable:
