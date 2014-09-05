@@ -57,9 +57,9 @@ def main():
                     word = i[1]
                     break
             for i in localreplacetable:
-                wordn = word.replace(i[0], i[1])
-                if wordn != word:
-                    word = wordn
+                wordnew = word.replace(i[0], i[1])
+                if wordnew != word:
+                    word = wordnew
                     break
             initial = ''
             for i in initialtable:
@@ -67,22 +67,25 @@ def main():
                     initial = i[1]
                     word = word[len(i[0]):]
                     break
-            final = ''
+            final = []
             while True:
                 foundfinal = False
                 for i in finaltable:
                     if word.startswith(i[0]):
-                        final += i[1]
+                        final.append(i[1])
                         word = word[len(i[0]):]
                         foundfinal = True
                 if not foundfinal:
                     break
-            if not final:
-                if initial in ('ts`', 'ts`_h', 's`', 'z`'):
-                    final = 'M'
-                elif initial in ('ts', 'ts_h', 's'):
-                    final = '1'
-            pho.append(' '.join((initial, final, endwithr)).strip())
+            if word == '':
+                if not final:
+                    if initial in ('ts`', 'ts`_h', 's`', 'z`'):
+                        final = 'M'
+                    elif initial in ('ts', 'ts_h', 's'):
+                        final = '1'
+                pho.append(' '.join([initial] + final + [endwithr]).strip())
+            else:
+                pho.append('ERROR')
         print(' '.join(('[' + i + ']' for i in pho)).strip())
 
 if __name__ == '__main__':
