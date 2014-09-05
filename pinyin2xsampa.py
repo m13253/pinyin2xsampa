@@ -15,7 +15,8 @@ wholereplacetable = (
 )
 localreplacetable = (
     ('yi', 'i'), ('wu', 'u'), ('yu', 'v'), ('ju', 'jv'), ('qu', 'qv'),
-    ('xu', 'xv'), ('y', 'i'), ('w', 'u'), ('\u00fc', 'v')
+    ('xu', 'xv'), ('y', 'i'), ('w', 'u'), ('\u00ea', 'eh'), ('\u00fc', 'v'),
+    ('iu', 'iou'), ('ui', 'uei'), ('un', 'uen'), ('um', 'uem')
 )
 initialtable = (
     ('b', 'p'), ('p', 'p_h'), ('m', 'm'), ('f', 'f'), ('d', 't'), ('t', 't_h'),
@@ -25,12 +26,19 @@ initialtable = (
     ('s', 's')
 )
 finaltable = (
-    ('\u00ea', 'E'), ('ai', 'aI'), ('an', 'a n'), ('ang', 'A N'), ('ao', 'AU'),
-    ('ei', 'eI'), ('en', '@ n'), ('eng', '7 N'), ('ian', 'iE n'), ('ie', 'iE'),
-    ('ing', 'iM N'), ('iu', 'i7U'), ('ong', 'o N'), ('ou', '7U'),
-    ('ui', 'ueI'), ('un', 'u@ n'), ('uo', 'uO'), ('ve', 'yE'), ('vn', 'yi n'),
-    ('ng', 'N'), ('n', 'n'), ('m', 'm'), ('a', 'a'), ('o', 'o'), ('e', 'MV'),
-    ('i', 'i'), ('u', 'u'), ('v', 'y')
+    ('iamg', 'iA m'), ('iang', 'iA N'), ('iomg', 'io m'), ('iong', 'io N'),
+    ('uamg', 'uA m'), ('uang', 'uA N'), ('uemg', 'u7 m'), ('ueng', 'u7 N'),
+    ('amg', 'A m'), ('ang', 'A N'), ('emg', '7 m'), ('eng', '7 N'),
+    ('iam', 'iE m'), ('ian', 'iE n'), ('iao', 'iaU'), ('img', 'i m'),
+    ('ing', 'iM N'), ('iou', 'i7U'), ('ong', 'o N'), ('uai', 'uaI'),
+    ('uam', 'ua m'), ('uan', 'ua n'), ('uei', 'ueI'), ('uem', 'u@ m'),
+    ('uen', 'u@ n'), ('van', 'ya n'), ('ai', 'aI'), ('am', 'a m'),
+    ('an', 'a n'), ('ao', 'AU'), ('ei', 'eI'), ('em', '@ m'), ('en', '@ n'),
+    ('ia', 'ia'), ('ie', 'iE'), ('im', 'i m'), ('in', 'i n'), ('io', 'io'),
+    ('ou', '7U'), ('ua', 'ua'), ('uo', 'uO'), ('ve', 'yE'), ('vm', 'yi m'),
+    ('vn', 'yi n'), ('m', 'm'), ('ng', 'N'), ('n', 'n'), ('a', 'a'),
+    ('o', 'o'), ('eh', 'E'), ('e', 'MV'), ('ih', 'M'), ('i', 'i'), ('u', 'u'),
+    ('v', 'y')
 )
 
 
@@ -45,9 +53,9 @@ def main():
         pho = []
         for word in words:
             if word == 'er':
-                pho.append('a r\\')
+                pho.append('A r\\')
                 continue
-            if word.endswith('r'):
+            if word[1:].endswith('r'):
                 word = word[:-1]
                 endwithr = 'r\\'
             else:
@@ -69,22 +77,21 @@ def main():
                     break
             final = []
             while True:
-                foundfinal = False
                 for i in finaltable:
                     if word.startswith(i[0]):
                         final.append(i[1])
                         word = word[len(i[0]):]
-                        foundfinal = True
-                if not foundfinal:
+                        break
+                else:
                     break
-            if word != '':
+            if word:
                 pho.append('ERROR')
                 continue
             if not final:
                 if initial in ('ts`', 'ts`_h', 's`', 'z`'):
-                    final = 'M'
+                    final.append('1')
                 elif initial in ('ts', 'ts_h', 's'):
-                    final = '1'
+                    final.append('M')
             pho.append(' '.join([initial] + final + [endwithr]).strip())
         print(' '.join(('[' + i + ']' for i in pho)).strip())
 
