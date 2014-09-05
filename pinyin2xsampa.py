@@ -14,7 +14,7 @@ wholereplacetable = (
     ('si', 's')
 )
 localreplacetable = (
-    ('yu', 'v'), ('yi', 'i'), ('wu', 'u'), ('ju', 'jv'), ('qu', 'qv'),
+    ('yi', 'i'), ('wu', 'u'), ('yu', 'v'), ('ju', 'jv'), ('qu', 'qv'),
     ('xu', 'xv'), ('y', 'i'), ('w', 'u'), ('\u00fc', 'v')
 )
 initialtable = (
@@ -25,12 +25,12 @@ initialtable = (
     ('s', 's')
 )
 finaltable = (
-    ('\u00ea', 'E'), ('ai', 'aI'), ('ei', 'eI'), ('ao', 'AU'), ('ou', '@U'),
-    ('ang', 'A N'), ('eng', '7 N'), ('an', 'a n'), ('ong', 'o N'),
-    ('en', '@ n'), ('ie', 'iE'), ('iu', 'i@U'), ('ian', 'iE n'),
-    ('ing', 'iM N'), ('ui', 'ueI'), ('uo', 'uO'), ('un', 'u@ n'), ('ve', 'yE'),
-    ('vn', 'yi n'), ('ng', 'N'), ('n', 'n'), ('m', 'm'), ('a', 'a'),
-    ('o', 'o'), ('e', 'MV'), ('i', 'i'), ('u', 'u'), ('v', 'y')
+    ('\u00ea', 'E'), ('ai', 'aI'), ('an', 'a n'), ('ang', 'A N'), ('ao', 'AU'),
+    ('ei', 'eI'), ('en', '@ n'), ('eng', '7 N'), ('ian', 'iE n'), ('ie', 'iE'),
+    ('ing', 'iM N'), ('iu', 'i7U'), ('ong', 'o N'), ('ou', '7U'),
+    ('ui', 'ueI'), ('un', 'u@ n'), ('uo', 'uO'), ('ve', 'yE'), ('vn', 'yi n'),
+    ('ng', 'N'), ('n', 'n'), ('m', 'm'), ('a', 'a'), ('o', 'o'), ('e', 'MV'),
+    ('i', 'i'), ('u', 'u'), ('v', 'y')
 )
 
 
@@ -46,7 +46,7 @@ def main():
         for word in words:
             if word == 'er':
                 pho.append('a r\\')
-                break
+                continue
             if word.endswith('r'):
                 word = word[:-1]
                 endwithr = 'r\\'
@@ -77,15 +77,15 @@ def main():
                         foundfinal = True
                 if not foundfinal:
                     break
-            if word == '':
-                if not final:
-                    if initial in ('ts`', 'ts`_h', 's`', 'z`'):
-                        final = 'M'
-                    elif initial in ('ts', 'ts_h', 's'):
-                        final = '1'
-                pho.append(' '.join([initial] + final + [endwithr]).strip())
-            else:
+            if word != '':
                 pho.append('ERROR')
+                continue
+            if not final:
+                if initial in ('ts`', 'ts`_h', 's`', 'z`'):
+                    final = 'M'
+                elif initial in ('ts', 'ts_h', 's'):
+                    final = '1'
+            pho.append(' '.join([initial] + final + [endwithr]).strip())
         print(' '.join(('[' + i + ']' for i in pho)).strip())
 
 if __name__ == '__main__':
