@@ -45,7 +45,7 @@ finaltable = (
 def main():
     while True:
         try:
-            line = input()
+            line = input('> ') if sys.stdin.isatty() else input()
         except EOFError:
             break
         line = line.replace("'", ' ')
