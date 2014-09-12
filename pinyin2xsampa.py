@@ -9,9 +9,9 @@ if sys.version_info < (3,):
 
 
 wholereplacetable = (
-    ('bo', 'buo'), ('po', 'puo'), ('mo', 'muo'), ('fo', 'fuo'), ('zhi', 'zh'),
-    ('chi', 'ch'), ('shi', 'sh'), ('ri', 'r'), ('zi', 'z'), ('ci', 'c'),
-    ('si', 's')
+    ('bo', 'buo'), ('po', 'puo'), ('mo', 'muo'), ('fo', 'fuo'),
+    ('zhi', 'zhirh'), ('chi', 'chirh'), ('shi', 'shirh'), ('ri', 'rirh'),
+    ('zi', 'zih'), ('ci', 'cih'), ('si', 'sih')
 )
 localreplacetable = (
     ('yi', 'i'), ('wu', 'u'), ('yu', 'v'), ('ju', 'jv'), ('qu', 'qv'),
@@ -37,8 +37,8 @@ finaltable = (
     ('ia', 'ia'), ('ie', 'iE'), ('im', 'i m'), ('in', 'i n'), ('io', 'io'),
     ('ou', '7U'), ('ua', 'ua'), ('uo', 'uO'), ('ve', 'yE'), ('vm', 'yi m'),
     ('vn', 'yi n'), ('m', 'm'), ('ng', 'N'), ('n', 'n'), ('a', 'a'),
-    ('o', 'o'), ('eh', 'E'), ('e', 'MV'), ('ih', 'M'), ('i', 'i'), ('u', 'u'),
-    ('v', 'y')
+    ('o', 'o'), ('eh', 'E'), ('e', 'MV'), ('ih', 'M'), ('irh', '1'),
+    ('i', 'i'), ('u', 'u'), ('v', 'y')
 )
 
 
@@ -90,11 +90,6 @@ def main():
             if word:
                 pho.append('ERROR')
                 continue
-            if not final:
-                if initial in ('ts`', 'ts`_h', 's`', 'z`'):
-                    final.append('1')
-                elif initial in ('ts', 'ts_h', 's'):
-                    final.append('M')
             pho.append(' '.join([initial] + final + [endwithr]).strip())
         print(' '.join(('[' + i + ']' for i in pho)).strip())
 
