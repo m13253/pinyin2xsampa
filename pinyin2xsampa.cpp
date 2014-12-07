@@ -11,27 +11,27 @@
 #include <utility>
 #include <vector>
 
-typedef const std::vector<std::pair<std::string, std::string>> replacetable_t;
+typedef const std::vector<std::pair<std::string, std::string>> pinyin2xsampa_replacetable;
 
-static replacetable_t wholereplacetable = {
+static pinyin2xsampa_replacetable wholereplacetable = {
     {"bo", "buo"}, {"po", "puo"}, {"mo", "muo"}, {"fo", "fuo"},
     {"zhi", "zhirh"}, {"chi", "chirh"}, {"shi", "shirh"}, {"ri", "rirh"},
     {"zi", "zih"}, {"ci", "cih"}, {"si", "sih"}
 };
-static replacetable_t localreplacetable = {
+static pinyin2xsampa_replacetable localreplacetable = {
     {"yi", "i"}, {"wu", "u"}, {"yu", "v"}, {"ju", "jv"}, {"qu", "qv"},
     {"xu", "xv"}, {"y", "i"}, {"w", "u"}, {u8"\u00ea", "eh"},
     {u8"\u00fc", "v"}, {"iu", "iou"}, {"ui", "uei"}, {"un", "uen"},
     {"um", "uem"}
 };
-static replacetable_t initialtable = {
+static pinyin2xsampa_replacetable initialtable = {
     {"b", "p"}, {"p", "p_h"}, {"m", "m"}, {"f", "f"}, {"d", "t"}, {"t", "t_h"},
     {"ng", "N"}, {"n", "n"}, {"l", "l"}, {"g", "k"}, {"k", "k_h"}, {"h", "x"},
     {"j", "ts\\"}, {"q", "ts\\_h"}, {"x", "s\\"}, {"zh", "ts`"},
     {"ch", "ts`_h"}, {"sh", "s`"}, {"r", "z`"}, {"z", "ts"}, {"c", "ts_h"},
     {"s", "s"}
 };
-static replacetable_t finaltable = {
+static pinyin2xsampa_replacetable finaltable = {
     {"iamg", "iA m"}, {"iang", "iA N"}, {"iomg", "io m"}, {"iong", "io N"},
     {"uamg", "uA m"}, {"uang", "uA N"}, {"uemg", "u7 m"}, {"ueng", "u7 N"},
     {"amg", "A m"}, {"ang", "A N"}, {"emg", "7 m"}, {"eng", "7 N"},
@@ -140,7 +140,7 @@ int main() {
         std::stringstream linebuf;
         if(std::cin.get(*linebuf.rdbuf())) {
             std::string line;
-            pinyin2xsampa::string_replace_all(line, linebuf.str(), "'", " ");
+            string_replace_all(line, linebuf.str(), "'", " ");
             linebuf.str(std::move(line));
             bool not_first_word = false;
             std::string word;
@@ -151,7 +151,7 @@ int main() {
                     not_first_word = true;
                 std::cout << '[';
                 bool not_first_phone = false;
-                for(const auto &i : pinyin2xsampa::pinyin2xsampa(word)) {
+                for(const auto &i : pinyin2xsampa(word)) {
                     if(not_first_phone)
                         std::cout << ' ';
                     else
