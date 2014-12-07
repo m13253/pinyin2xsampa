@@ -11,8 +11,6 @@
 #include <utility>
 #include <vector>
 
-namespace pinyin2xsampa {
-
 typedef const std::vector<std::pair<std::string, std::string>> replacetable_t;
 
 static replacetable_t wholereplacetable = {
@@ -132,8 +130,6 @@ std::vector<std::string> pinyin2xsampa(std::string word) {
     if(endswithr)
         phonetics.push_back("r\\");
     return phonetics;
-}
-
 }
 
 int main() {
