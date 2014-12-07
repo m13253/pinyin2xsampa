@@ -42,6 +42,47 @@ finaltable = (
 )
 
 
+def pinyin2xsampa(word):
+    if word == 'er':
+        return ['A r\\']
+    if word[1:].endswith('r'):
+        word = word[:-1]
+        endswithr = True
+    else:
+        endswithr = False
+    for i in wholereplacetable:
+        if word == i[0]:
+            word = i[1]
+            break
+    while True:
+        for i in localreplacetable:
+            wordnew = word.replace(i[0], i[1])
+            if wordnew != word:
+                word = wordnew
+                break
+        else:
+            break
+    phonetics = []
+    for i in initialtable:
+        if word.startswith(i[0]):
+            phonetics.append(i[1])
+            word = word[len(i[0]):]
+            break
+    while True:
+        for i in finaltable:
+            if word.startswith(i[0]):
+                phonetics.append(i[1])
+                word = word[len(i[0]):]
+                break
+        else:
+            break
+    if word:
+        return ['ERROR']
+    if endswithr:
+        phonetics.append('r\\')
+    return phonetics
+
+
 def main():
     while True:
         try:
@@ -52,47 +93,8 @@ def main():
         words = line.split()
         pho = []
         for word in words:
-            if word == 'er':
-                pho.append('A r\\')
-                continue
-            if word[1:].endswith('r'):
-                word = word[:-1]
-                endswithr = True
-            else:
-                endswithr = False
-            for i in wholereplacetable:
-                if word == i[0]:
-                    word = i[1]
-                    break
-            while True:
-                for i in localreplacetable:
-                    wordnew = word.replace(i[0], i[1])
-                    if wordnew != word:
-                        word = wordnew
-                        break
-                else:
-                    break
-            phonetics = []
-            for i in initialtable:
-                if word.startswith(i[0]):
-                    phonetics.append(i[1])
-                    word = word[len(i[0]):]
-                    break
-            while True:
-                for i in finaltable:
-                    if word.startswith(i[0]):
-                        phonetics.append(i[1])
-                        word = word[len(i[0]):]
-                        break
-                else:
-                    break
-            if word:
-                pho.append('ERROR')
-                continue
-            if endswithr:
-                phonetics.append('r\\')
-            pho.append(' '.join(phonetics))
-        print(' '.join(('[' + i + ']' for i in pho)).strip())
+            pho.append(' '.join(pinyin2xsampa(word)))
+        print(' '.join(('[' + i + ']' for i in pho)))
 
 if __name__ == '__main__':
     main()
