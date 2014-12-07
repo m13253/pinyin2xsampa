@@ -85,9 +85,9 @@ static inline bool string_replace_all(std::string &result, const std::string &st
 std::vector<std::string> pinyin2xsampa(std::string word) {
     if(word == std::string("er"))
         return {"A r\\"};
-    std::vector<std::string> endwithr;
+    bool endswithr = false;
     if(word.length() > 1 && string_is_endwith(word, "r")) {
-        endwithr.push_back("r\\");
+        endswithr = true;
         word = word.substr(0, word.length()-1);
     }
     for(const auto &i : wholereplacetable)
@@ -108,10 +108,10 @@ std::vector<std::string> pinyin2xsampa(std::string word) {
         if(!flag)
             break;
     }
-    std::vector<std::string> result;
+    std::vector<std::string> phonetics;
     for(const auto &i : initialtable)
         if(string_is_startswith(word, i.first)) {
-            result.push_back(i.second);
+            phonetics.push_back(i.second);
             word = word.substr(i.first.length(), std::string::npos);
             break;
         }
@@ -119,7 +119,7 @@ std::vector<std::string> pinyin2xsampa(std::string word) {
         bool flag = false;
         for(const auto &i : finaltable)
             if(string_is_startswith(word, i.first)) {
-                result.push_back(i.second);
+                phonetics.push_back(i.second);
                 word = word.substr(i.first.length(), std::string::npos);
                 flag = true;
                 break;
@@ -129,8 +129,9 @@ std::vector<std::string> pinyin2xsampa(std::string word) {
     }
     if(!word.empty())
         return {"ERROR"};
-    result.insert(result.cend(), endwithr.cbegin(), endwithr.cend());
-    return result;
+    if(endswithr)
+        phonetics.push_back("r\\");
+    return phonetics;
 }
 
 }
@@ -142,8 +143,6 @@ int main() {
             std::cerr << "> " << std::flush;
         std::stringstream linebuf;
         if(std::cin.get(*linebuf.rdbuf())) {
-            char c;
-            std::cin.get(c); /* bypass \n */
             std::string line;
             pinyin2xsampa::string_replace_all(line, linebuf.str(), "'", " ");
             linebuf.str(std::move(line));
@@ -169,6 +168,8 @@ int main() {
             }
             std::cout << std::endl;
         }
+        char c;
+        std::cin.get(c); /* bypass \n */
     }
     return retval;
 }

@@ -57,9 +57,9 @@ def main():
                 continue
             if word[1:].endswith('r'):
                 word = word[:-1]
-                endwithr = 'r\\'
+                endswithr = True
             else:
-                endwithr = ''
+                endswithr = False
             for i in wholereplacetable:
                 if word == i[0]:
                     word = i[1]
@@ -72,17 +72,16 @@ def main():
                         break
                 else:
                     break
-            initial = ''
+            phonetics = []
             for i in initialtable:
                 if word.startswith(i[0]):
-                    initial = i[1]
+                    phonetics.append(i[1])
                     word = word[len(i[0]):]
                     break
-            final = []
             while True:
                 for i in finaltable:
                     if word.startswith(i[0]):
-                        final.append(i[1])
+                        phonetics.append(i[1])
                         word = word[len(i[0]):]
                         break
                 else:
@@ -90,7 +89,9 @@ def main():
             if word:
                 pho.append('ERROR')
                 continue
-            pho.append(' '.join([initial] + final + [endwithr]).strip())
+            if endswithr:
+                phonetics.append('r\\')
+            pho.append(' '.join(phonetics))
         print(' '.join(('[' + i + ']' for i in pho)).strip())
 
 if __name__ == '__main__':
