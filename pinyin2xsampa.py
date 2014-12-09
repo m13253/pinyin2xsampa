@@ -44,7 +44,7 @@ finaltable = (
 
 def pinyin2xsampa(word):
     if word == 'er':
-        return ['A r\\']
+        return 'A r\\'
     if word[1:].endswith('r'):
         word = word[:-1]
         endswithr = True
@@ -77,13 +77,14 @@ def pinyin2xsampa(word):
         else:
             break
     if word:
-        return ['ERROR']
+        return 'ERROR'
     if endswithr:
         phonetics.append('r\\')
-    return phonetics
+    return ' '.join(phonetics)
 
 
 def main():
+    retval = 0
     while True:
         try:
             line = input('> ') if sys.stdin.isatty() else input()
@@ -91,10 +92,12 @@ def main():
             break
         line = line.replace("'", ' ')
         words = line.split()
-        pho = []
+        output_line = []
         for word in words:
-            pho.append(' '.join(pinyin2xsampa(word)))
-        print(' '.join(('[' + i + ']' for i in pho)))
+            phonetics = pinyin2xsampa(word)
+            output_line.append('['+phonetics+']')
+        print(' '.join(output_line))
+    return retval
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

@@ -11,7 +11,7 @@
 #include <utility>
 #include <vector>
 
-typedef const std::vector<std::pair<std::string, std::string>> pinyin2xsampa_replacetable;
+typedef const std::pair<std::string, std::string> pinyin2xsampa_replacetable[];
 
 static pinyin2xsampa_replacetable wholereplacetable = {
     {"bo", "buo"}, {"po", "puo"}, {"mo", "muo"}, {"fo", "fuo"},
@@ -80,9 +80,9 @@ static inline bool string_replace_all(std::string &result, const std::string &st
     }
 }
 
-std::vector<std::string> pinyin2xsampa(std::string word) {
+std::string pinyin2xsampa(std::string word) {
     if(word == std::string("er"))
-        return {"A r\\"};
+        return "A r\\";
     bool endswithr = false;
     if(word.length() > 1 && string_is_endwith(word, "r")) {
         endswithr = true;
@@ -106,10 +106,10 @@ std::vector<std::string> pinyin2xsampa(std::string word) {
         if(!flag)
             break;
     }
-    std::vector<std::string> phonetics;
+    std::string phonetics;
     for(const auto &i : initialtable)
         if(string_is_startswith(word, i.first)) {
-            phonetics.push_back(i.second);
+            phonetics = i.second;
             word = word.substr(i.first.length(), std::string::npos);
             break;
         }
@@ -117,7 +117,9 @@ std::vector<std::string> pinyin2xsampa(std::string word) {
         bool flag = false;
         for(const auto &i : finaltable)
             if(string_is_startswith(word, i.first)) {
-                phonetics.push_back(i.second);
+                if(!phonetics.empty())
+                    phonetics += ' ';
+                phonetics += i.second;
                 word = word.substr(i.first.length(), std::string::npos);
                 flag = true;
                 break;
@@ -126,9 +128,9 @@ std::vector<std::string> pinyin2xsampa(std::string word) {
             break;
     }
     if(!word.empty())
-        return {"ERROR"};
+        return "ERROR";
     if(endswithr)
-        phonetics.push_back("r\\");
+        phonetics += std::string(" r\\");
     return phonetics;
 }
 
@@ -149,18 +151,10 @@ int main() {
                     std::cout << ' ';
                 else
                     not_first_word = true;
-                std::cout << '[';
-                bool not_first_phone = false;
-                for(const auto &i : pinyin2xsampa(word)) {
-                    if(not_first_phone)
-                        std::cout << ' ';
-                    else
-                        not_first_phone = true;
-                    std::cout << i;
-                    if(i == std::string("ERROR"))
-                        retval = 1;
-                }
-                std::cout << ']';
+                std::string phonetics = pinyin2xsampa(word);
+                std::cout << '[' << phonetics << ']';
+                if(phonetics == std::string("ERROR"))
+                    retval = 1;
             }
             std::cout << std::endl;
         }
