@@ -32,19 +32,19 @@ static pinyin2xsampa_replacetable initialtable = {
     {"s", "s"}
 };
 static pinyin2xsampa_replacetable finaltable = {
-    {"iamg", "iA m"}, {"iang", "iA N"}, {"iomg", "io m"}, {"iong", "io N"},
+    {"iamg", "iA m"}, {"iang", "iA N"}, {"iomg", "iU m"}, {"iong", "iU N"},
     {"uamg", "uA m"}, {"uang", "uA N"}, {"uemg", "u7 m"}, {"ueng", "u7 N"},
     {"amg", "A m"}, {"ang", "A N"}, {"emg", "7 m"}, {"eng", "7 N"},
     {"iam", "iE m"}, {"ian", "iE n"}, {"iao", "iaU"}, {"img", "i m"},
     {"ing", "iM N"}, {"iou", "i7U"}, {"ong", "o N"}, {"uai", "uaI"},
     {"uam", "ua m"}, {"uan", "ua n"}, {"uei", "ueI"}, {"uem", "u@ m"},
-    {"uen", "u@ n"}, {"van", "ya n"}, {"ai", "aI"}, {"am", "a m"},
-    {"an", "a n"}, {"ao", "AU"}, {"ei", "eI"}, {"em", "@ m"}, {"en", "@ n"},
-    {"ia", "ia"}, {"ie", "iE"}, {"im", "i m"}, {"in", "i n"}, {"io", "io"},
-    {"ou", "7U"}, {"ua", "ua"}, {"uo", "uO"}, {"ve", "yE"}, {"vm", "yi m"},
-    {"vn", "yi n"}, {"m", "m"}, {"ng", "N"}, {"n", "n"}, {"a", "a"},
-    {"o", "o"}, {"eh", "E"}, {"e", "MV"}, {"ih", "M"}, {"irh", "1"},
-    {"i", "i"}, {"u", "u"}, {"v", "y"}
+    {"uen", "u@ n"}, {"vam" , "yE m"}, {"van", "yE n"}, {"ai", "aI"},
+    {"am", "a m"}, {"an", "a n"}, {"ao", "AU"}, {"ei", "eI"}, {"em", "@ m"},
+    {"en", "@ n"}, {"ia", "ia"}, {"ie", "iE"}, {"im", "i m"}, {"in", "i n"},
+    {"io", "io"}, {"ou", "7U"}, {"ua", "ua"}, {"uo", "uO"}, {"ve", "yE"},
+    {"vm", "yi m"}, {"vn", "yi n"}, {"m", "m"}, {"ng", "N"}, {"n", "n"},
+    {"a", "a"}, {"o", "o"}, {"eh", "E"}, {"e", "MV"}, {"ih", "M"},
+    {"irh", "1"}, {"i", "i"}, {"u", "u"}, {"v", "y"}
 };
 
 static inline bool string_is_startswith(const std::string &str, const std::string &substr) {
