@@ -157,11 +157,11 @@ int main() {
     while(std::cin) {
         if(isatty(fileno(stdin)))
             std::cerr << "> " << std::flush;
-        std::stringstream linebuf;
-        if(std::cin.get(*linebuf.rdbuf())) {
-            std::string line;
-            string_replace_all(line, linebuf.str(), "'", " ");
-            linebuf.str(std::move(line));
+        std::string line;
+        if(std::getline(std::cin, line)) {
+            std::string linerep;
+            string_replace_all(linerep, line, "'", " ");
+            std::stringstream linebuf(std::move(linerep));
             bool not_first_word = false;
             std::string word;
             while(linebuf >> word) {
@@ -176,8 +176,6 @@ int main() {
             }
             std::cout << std::endl;
         }
-        char c;
-        std::cin.get(c); /* bypass \n */
     }
     return retval;
 }
