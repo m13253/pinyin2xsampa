@@ -72,7 +72,7 @@ static inline bool string_is_startswith(const std::string &str, const std::strin
         return str.compare(0, substr.length(), substr) == 0;
 }
 
-static inline bool string_is_endwith(const std::string &str, const std::string &substr) {
+static inline bool string_is_endswith(const std::string &str, const std::string &substr) {
     if(str.length() < substr.length())
         return false;
     else
@@ -102,7 +102,7 @@ std::string pinyin2xsampa(std::string word) {
     if(word == std::string("er"))
         return "A r\\";
     bool endswithr = false;
-    if(word.length() > 1 && string_is_endwith(word, "r")) {
+    if(word.length() > 1 && string_is_endswith(word, "r")) {
         endswithr = true;
         word = word.substr(0, word.length()-1);
     }
@@ -147,8 +147,13 @@ std::string pinyin2xsampa(std::string word) {
     }
     if(!word.empty())
         return "ERROR";
-    if(endswithr)
-        phonetics += std::string(" r\\");
+    if(endswithr) {
+        if(string_is_endswith(phonetics, " n") || string_is_endswith(phonetics, " N")) {
+            phonetics.resize(phonetics.length()-2);
+            phonetics += std::string("~ r\\");
+        } else
+            phonetics += std::string(" r\\");
+    }
     return phonetics;
 }
 

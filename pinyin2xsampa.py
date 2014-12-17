@@ -94,9 +94,13 @@ def pinyin2xsampa(word):
             break
     if word:
         return 'ERROR'
+    phonetics = ' '.join(phonetics)
     if endswithr:
-        phonetics.append('r\\')
-    return ' '.join(phonetics)
+        if phonetics.endswith(' n') or phonetics.endswith(' N'):
+            phonetics = phonetics[:-2]+'~ r\\'
+        else:
+            phonetics += ' r\\'
+    return phonetics
 
 
 def main():
