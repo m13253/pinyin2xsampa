@@ -46,7 +46,7 @@ finaltable = (
     ('uamg', 'uAm'), ('uang', 'uAN'), ('uemg', 'u7m'), ('ueng', 'u7N'),
     ('amg', 'Am'), ('ang', 'AN'), ('emg', '7m'), ('eng', '7N'), ('iam', 'iEm'),
     ('ian', 'iE_n'), ('iao', 'iaU'), ('img', 'im'), ('ing', 'iMN'),
-    ('iou', 'i7U'), ('ong', 'oN'), ('uai', 'uaI'), ('uam', 'uam'),
+    ('iou', 'i7U'), ('ong', 'UN'), ('uai', 'uaI'), ('uam', 'uam'),
     ('uan', 'ua_n'), ('uei', 'ueI'), ('uem', 'u@m'), ('uen', 'u@_n'),
     ('vam', 'yEm'), ('van', 'yE_n'), ('ai', 'aI'), ('am', 'am'), ('an', 'a_n'),
     ('ao', 'AU'), ('ei', 'eI'), ('em', '@m'), ('en', '@_n'), ('ia', 'ia'),
