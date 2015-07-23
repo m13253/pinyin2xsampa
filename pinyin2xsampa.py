@@ -42,19 +42,18 @@ initialtable = (
     ('s', 's')
 )
 finaltable = (
-    ('iamg', 'iA m'), ('iang', 'iA N'), ('iomg', 'iU m'), ('iong', 'iU N'),
-    ('uamg', 'uA m'), ('uang', 'uA N'), ('uemg', 'u7 m'), ('ueng', 'u7 N'),
-    ('amg', 'A m'), ('ang', 'A N'), ('emg', '7 m'), ('eng', '7 N'),
-    ('iam', 'iE m'), ('ian', 'iE n'), ('iao', 'iaU'), ('img', 'i m'),
-    ('ing', 'iM N'), ('iou', 'i7U'), ('ong', 'o N'), ('uai', 'uaI'),
-    ('uam', 'ua m'), ('uan', 'ua n'), ('uei', 'ueI'), ('uem', 'u@ m'),
-    ('uen', 'u@ n'), ('vam', 'yE m'), ('van', 'yE n'), ('ai', 'aI'),
-    ('am', 'a m'), ('an', 'a n'), ('ao', 'AU'), ('ei', 'eI'), ('em', '@ m'),
-    ('en', '@ n'), ('ia', 'ia'), ('ie', 'iE'), ('im', 'i m'), ('in', 'i n'),
-    ('io', 'io'), ('ou', '7U'), ('ua', 'ua'), ('uo', 'uO'), ('ve', 'yE'),
-    ('vm', 'yi m'), ('vn', 'yi n'), ('m', 'm'), ('ng', 'N'), ('n', 'n'),
-    ('a', 'a'), ('o', 'o'), ('eh', 'E'), ('e', 'MV'), ('ih', 'M'),
-    ('irh', '1'), ('i', 'i'), ('u', 'u'), ('v', 'y')
+    ('iamg', 'iAm'), ('iang', 'iAN'), ('iomg', 'iUm'), ('iong', 'iUN'),
+    ('uamg', 'uAm'), ('uang', 'uAN'), ('uemg', 'u7m'), ('ueng', 'u7N'),
+    ('amg', 'Am'), ('ang', 'AN'), ('emg', '7m'), ('eng', '7N'), ('iam', 'iEm'),
+    ('ian', 'iE_n'), ('iao', 'iaU'), ('img', 'im'), ('ing', 'iMN'),
+    ('iou', 'i7U'), ('ong', 'oN'), ('uai', 'uaI'), ('uam', 'uam'),
+    ('uan', 'ua_n'), ('uei', 'ueI'), ('uem', 'u@m'), ('uen', 'u@_n'),
+    ('vam', 'yEm'), ('van', 'yE_n'), ('ai', 'aI'), ('am', 'am'), ('an', 'a_n'),
+    ('ao', 'AU'), ('ei', 'eI'), ('em', '@m'), ('en', '@_n'), ('ia', 'ia'),
+    ('ie', 'iE'), ('im', 'im'), ('in', 'i_n'), ('io', 'io'), ('ou', '7U'),
+    ('ua', 'ua'), ('uo', 'uO'), ('ve', 'yE'), ('vm', 'yim'), ('vn', 'yi_n'),
+    ('m', 'm'), ('ng', 'N'), ('n', 'n'), ('a', 'a'), ('o', 'o'), ('eh', 'E'),
+    ('e', 'MV'), ('ih', 'M'), ('irh', '1'), ('i', 'i'), ('u', 'u'), ('v', 'y')
 )
 
 

@@ -19,6 +19,8 @@ Usage
 
 Input with Pinyin separated with a space between each word.
 
+The output is in Vocaloid 3 style. However, several corrections are made, so the results are not exactly Vocaloid 3 phonetics.
+
 
 Issues
 ------
