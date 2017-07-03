@@ -96,7 +96,7 @@ def pinyin2xsampa(word):
     phonetics = ' '.join(phonetics)
     if endswithr:
         if phonetics.endswith(' n') or phonetics.endswith(' N'):
-            phonetics = phonetics[:-2]+'~ r\\'
+            phonetics = phonetics[:-2] + '~ r\\'
         else:
             phonetics += ' r\\'
     return phonetics
@@ -114,7 +114,7 @@ def main():
         output_line = []
         for word in words:
             phonetics = pinyin2xsampa(word)
-            output_line.append('['+phonetics+']')
+            output_line.append('[' + phonetics + ']')
         print(' '.join(output_line))
     return retval
 
